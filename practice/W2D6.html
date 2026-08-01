@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>我的博客测试</title>
+    </head>
+    <body>
+        <header>
+            <h1>我的博客测试</h1>
+            <p>一些简单的自我介绍</p>
+            <nav>
+                <ul>
+                    <li><a href="#article">一篇美丽的文章</a></li>
+                    <li><a href="#curriculum"> 一张美丽的课程表</a></li>
+                    <li><a href="#contact">一段优雅的联系方式</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="article">
+                <!--文章写这里-->
+                <h2>优雅的文章标题</h2>
+                <article>
+                    <h3>一篇可以被转载的文章标题</h3>
+                    <p>有趣的内容</p>
+                </article>
+            </section>
+            <section id="curriculum">
+                <h2>课程表主体页</h2>
+                <table>
+                    <!--课程表，你出的太简单了，我改改-->
+                    <caption>课程表</caption>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th scope="col">周一</th>
+                            <th scope="col">周二</th>
+                            <th scope="col">周三</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">上午</th>
+                            <td>语文</td>
+                            <td>数学</td>
+                            <td>英语</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">下午</th>
+                            <td>英语</td>
+                            <td>语文</td>
+                            <td>数学</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="contact">
+                <h2>联系方式</h2>
+                <!--联系方式单选组-->
+                <form>
+                    <fieldset>
+                        <legend>联系方式</legend>
+                        <input type="radio" id="phone" value="phone" name="contact">
+                        <label for="phone">电话</label>
+                        <input type="radio" id="email" value="email" name="contact">
+                        <label for="email">邮箱</label>
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <p>版权信息：</p>
+        </footer>
+    </body>
+</html>
