@@ -1,0 +1,107 @@
+body {
+  background-image: url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg);
+  font-family: sans-serif;
+  /* 背景图留20px最小空间 */
+  padding: 20px;
+}
+
+h1 {
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+.established {
+  font-style: italic;
+}
+
+h1, h2, p {
+  text-align: center;
+}
+
+.menu {
+  width: 80%;
+  background-color: burlywood;
+  /* 用margin auto居中 */
+  margin-left: auto;
+  margin-right: auto;
+  /* 整体内容与背景间隔20px */
+  padding: 20px;
+  /* 最大背景宽度500px */
+  max-width: 500px;
+}
+
+img {
+  display: block;
+  /* 图片居中 */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:-25px;
+}
+
+hr {
+  height: 2px;
+  background-color: brown;
+  border-color: brown;
+}
+
+.bottom-line {
+  margin-top: 25px;
+}
+
+h1, h2 {
+  font-family: Impact, serif;
+  /* 用“，”分开主字体与备用字体 */
+}
+
+.item p {
+  display: inline-block;
+  /* 把两个p缩到一行，注意每个单独设置好宽度范围，在接下来两个选择器 */
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.flavor, .dessert {
+  text-align: left;
+  width: 75%;
+}
+
+.price {
+  text-align: right;
+  width: 25%;
+}
+
+/* FOOTER */
+
+footer {
+  font-size: 14px;
+}
+
+address {
+  font-style: normal;
+}
+
+.address {
+  margin-bottom: 5px;
+}
+
+a {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover {
+  color: brown;
+}
+
+a:active {
+  color: brown;
+}
