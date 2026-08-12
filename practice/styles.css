@@ -1,11 +1,12 @@
 .businesscard {
-    border: 4px blue inset;
+    border: inset;
     background-color: bisque;
     padding: 10px 20px;
 }
 
 h1,h2 {
     font-size: smaller;
+    
 }
 
 main p {
