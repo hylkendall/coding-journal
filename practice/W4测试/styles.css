@@ -1,0 +1,45 @@
+body {
+    background-color: gray;
+}
+
+.profile-card {
+    background-color:beige;
+    border: solid 1px gray;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    margin: auto;
+}
+
+.name {
+    font-size: large;
+    font-style: italic;
+}
+
+a {
+    text-decoration: none;
+    background-color: azure;
+    border-radius: 8px;
+    border: solid 1px red;
+    padding: 0 10% 0;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: brown;
+}
+
+a:hover {
+    color: blueviolet;
+}
+
+a:focus {
+    color: aqua;
+}
+
+a:active {
+    color: red;
+}
