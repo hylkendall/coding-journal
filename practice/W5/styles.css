@@ -1,0 +1,15 @@
+input {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid gray;
+    border-radius: 50%;
+}
+
+input:checked {
+    background-color: green;
+}
+
+input:hover {
+    border-color: aquamarine;
+}
