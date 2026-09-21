@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.header {
+  background: #333;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;   /* 窄屏：卡片竖着堆 */
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  background: #4a90d9;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    flex-direction: row;    /* 宽屏：卡片改成横排 */
+  }
+  .card {
+    flex: 1;                /* 三张卡片平分宽度 */
+  }
+}
