@@ -1,0 +1,62 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;   /* 所有元素(含伪元素)统一继承 border-box */
+}
+
+#piano {
+  background-color: #00471b;
+  width: 992px;
+  height: 290px;
+  margin: 80px auto;
+  padding: 90px 20px 0 20px;
+  position: relative;    /* ★自己不动,给里面 absolute 的 logo 当锚点(板子) */
+  border-radius: 10px;
+}
+
+.keys {
+  background-color: #040404;
+  width: 949px;
+  height: 180px;
+  padding-left: 2px;
+  overflow: hidden;      /* 兜住浮动的白键,并裁掉黑键伸出容器边缘的部分 */
+}
+
+.key {
+  background-color: #ffffff;
+  position: relative;    /* ★自己不动,给自己的黑键 ::after 当锚点 */
+  width: 41px;
+  height: 175px;
+  margin: 2px;
+  float: left;           /* 白键横向排成一排 */
+  border-radius: 0 0 3px 3px;
+}
+
+.key.black--key::after {
+  background-color: #1d1e22;
+  content: "";
+  position: absolute;    /* ★脱离文档流,贴在最近的板 = 它所属的那个 .key */
+  left: -18px;           /* 往左挪 18px,黑键跨在两白键的缝上 */
+  width: 32px;
+  height: 100px;
+  border-radius: 0 0 3px 3px;
+}
+
+.logo {
+  width: 200px;
+  position: absolute;    /* ★脱离文档流,贴在最近的板 = #piano */
+  top: 23px;             /* 只写了 top,水平方向留在原位,只被往下推 23px */
+}
+
+@media (max-width: 768px) {   /* 小屏:只缩宽度,不动 position——这一节练的就是响应式 */
+  #piano { width: 358px; }
+  .keys  { width: 318px; }
+  .logo  { width: 150px; }
+}
+
+@media (max-width: 1199px) and (min-width: 769px) {  /* 中屏 769–1199px */
+  #piano { width: 675px; }
+  .keys  { width: 633px; }
+}
