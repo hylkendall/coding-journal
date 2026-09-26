@@ -1,0 +1,31 @@
+:root {
+    --main-color: gray;
+    --background-color: blue;
+    --gap: 20px;
+}
+
+* {
+    margin: 0;
+}
+
+.cards {
+    background-color: var(--mian-color, red);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.card {
+    background-color: var(--background-color, red);
+}
+
+@media (min-width: 768px) {
+    .cards {
+        flex-direction: row;
+        --gap: 40px;
+    }
+    .card {
+        flex: 1;
+    }
+}
