@@ -1,0 +1,303 @@
+/* ============================================================
+   创建杂志 · styles.css（注释版）
+   分段：① 全局打底 ② 页面外框 ③ 通用元素 ④ 各区块（按页面从上到下）⑤ 响应式
+   规则顺序和原文件完全一致，只加了注释，效果不变。
+   ============================================================ */
+
+
+/* ========== ① 全局打底 ========== */
+
+/* 重置：去掉所有元素自带的内外边距，并把盒模型统一成 border-box
+   （width 包含 padding 和 border，算尺寸时不用再加加减减）。
+   * 只能选中元素，选不中伪元素，所以 ::before / ::after 要单独列出来。 */
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* 浏览器默认字号是 16px（在 Safari 检查器里选中 <html>，
+   到"计算"面板看 font-size 就能验证）。
+   16px × 62.5% = 10px，所以本页 1rem = 10px：1.8rem 就是 18px，94rem 就是 940px。
+   用百分比而不直接写 10px，是因为用户在浏览器设置里调大默认字号时，整页还能跟着放大。 */
+html {
+  font-size: 62.5%;
+}
+
+/* 正文字体、文字颜色、背景色。color 和 font-family 会被子元素继承，
+   所以在 body 上写一次，全页文字都生效。
+   'Baskervville' 由 HTML 里的 Google Fonts 链接引入，serif 是加载失败时的后备字体。 */
+body {
+  font-family: 'Baskervville', serif;
+  color: linen;
+  background-color: rgb(20, 30, 40);
+}
+
+/* 大标题用 Anton，各级小标题用 Raleway。
+   逗号分隔 = 同一组样式同时给多个选择器。 */
+h1 {
+  font-family: 'Anton', sans-serif;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', sans-serif;
+}
+
+/* 链接不会跟着 body 变色：浏览器自带的样式表给链接单独设了颜色（默认蓝色），
+   所以要自己再写一次 color，再把下划线去掉。 */
+a {
+  text-decoration: none;
+  color: linen;
+}
+
+
+/* ========== ② 页面外框：左留白 | 版心 | 右留白 ========== */
+
+main {
+  display: grid;
+  /* minmax(最小, 最大)：这一列的宽度只能在这个范围里变。
+     · 两边 minmax(2rem, 1fr)：留白最少 20px，最多去分剩下的空间。
+     · 中间 minmax(min-content, 94rem)：正文最宽 940px；
+       min-content = 内容能缩到的最小宽度（对文字来说，大约是最长那个单词的宽度）。
+     分配顺序：先满足每列的最小值 → 中间列往上长，到 94rem 封顶 → 剩下的空间按 fr 平分给两边。
+     效果：宽屏时正文定宽居中；窄屏时两边先缩到 2rem 不动，之后才轮到正文缩。 */
+  grid-template-columns: minmax(2rem, 1fr) minmax(min-content, 94rem) minmax(2rem, 1fr);
+  /* 只设行与行之间的间距：三个 section 上下各隔 30px。
+     这里没写 grid-template-rows，所以三行都是隐式行，高度由内容撑开。 */
+  row-gap: 3rem;
+}
+
+
+/* ========== ③ 通用元素 ========== */
+
+/* 所有图片宽度撑满自己所在的格子，格子变宽变窄，图片跟着缩放。
+   object-fit: cover：图片框的宽高比和图片本身不一致时，
+   保持原比例铺满整个框，多出来的部分裁掉，而不是把图拉变形。
+   本页 .image-1/2/3 在 HTML 里写了 height="400"，CSS 只改了宽度，
+   所以框的高度固定 400px、宽度跟着格子变，比例会变，cover 就在这时起作用。
+   实验：删掉 object-fit 这一行，拖窄窗口，看下面那几张图是不是被压扁了。 */
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+/* hr 那条线其实就是它的边框：border 决定线的粗细、样式和颜色。
+   rgba 的第 4 个值 0.6 是不透明度。margin: 1.5rem 0 = 上下 15px，左右 0。 */
+hr {
+  margin: 1.5rem 0;
+  border: 1px solid rgba(120, 120, 120, 0.6);
+}
+
+
+/* ========== ④ 各区块（按页面从上到下） ========== */
+
+/* 标题区放进版心：grid-column: 2 / 3 = 从第 2 条线到第 3 条线，也就是中间那一列。
+   它自己同时也是网格容器（网格可以嵌套：对 main 来说它是子项，对里面的元素来说它是容器）。
+   分两列：第 1 行是跨满两列的 .hero，第 2 行左边作者信息、右边社交图标。 */
+.heading {
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 1.5rem;
+}
+
+/* 正文区，同样放进版心。
+   column-width: 25rem 是 CSS 多列布局（像报纸分栏），跟网格是两套东西。
+   意思是"每栏的理想宽度约 250px"，浏览器按可用宽度自动决定分几栏，
+   实际栏宽会略微拉宽以填满整行：940px 宽大约放 3 栏，窗口变窄栏数自动减少，最后剩 1 栏。
+   text-align: justify：两端对齐，每行左右边缘都对齐，像印刷品。
+   letter-spacing：字母之间的间距。
+   注意：.text-with-images 也带着 text 这个类，但它被设成了 display: grid，
+   多列属性对网格容器不起作用，所以那一块不会被分栏。 */
+.text {
+  grid-column: 2 / 3;
+  font-size: 1.8rem;
+  letter-spacing: 0.6px;
+  column-width: 25rem;
+  text-align: justify;
+}
+
+/* -1 表示倒数第 1 条线，也就是最后一条线。
+   1 / -1 = 从第一条线到最后一条线，不管有几列都能跨满。 */
+.hero {
+  grid-column: 1 / -1;
+  /* 这份代码里没有哪个子元素用了 absolute 定位，所以这一句目前看不出效果。 */
+  position: relative;
+}
+
+/* 8rem = 80px。orangered 是 CSS 内置的颜色名。 */
+.hero-title {
+  text-align: center;
+  color: orangered;
+  font-size: 8rem;
+}
+
+.hero-subtitle {
+  font-size: 2.4rem;
+  color: orangered;
+  text-align: center;
+}
+
+/* .author 是个 div，字号和字体写在它身上，里面的两个 <p> 继承过去。 */
+.author {
+  font-size: 2rem;
+  font-family: "Raleway", sans-serif;
+}
+
+/* 空格 = 后代关系，:hover = 鼠标悬停时。
+   合起来：鼠标停在 .author-name 里面的链接上时，链接背景变绿。 */
+.author-name a:hover {
+  background-color: #306203;
+}
+
+/* 半透明的白色，比正文暗一点，表示这是次要信息。 */
+.publish-date {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 社交图标一行排开。
+   图标是 FontAwesome 的"字体"，所以用 font-size 就能调图标大小。
+   repeat(5, 1fr)：显式 5 列，正好放 5 个图标。
+   grid-auto-flow: column：自动摆放改成"往右加新列"（默认是 row：一行排满就往下加新行）。
+   grid-auto-columns: 1fr：自动加出来的隐式列宽 1fr。
+   现在正好 5 个图标，5 个显式列就够用，后面这两句其实没起作用；
+   要是加第 6 个图标，它们才生效：第 6 个排到右边新加的一列，而不是掉到下一行。
+   align-items: center：每个图标在自己的格子里垂直居中。 */
+.social-icons {
+  display: grid;
+  font-size: 3rem;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: center;
+}
+
+/* 首字下沉：::first-letter 选中段落的第一个字母。
+   float: left 让这个大字母浮到左边，后面的文字绕着它排，
+   于是有了杂志那种首字母大大地占好几行的效果。
+   float 是比 flex 和 grid 更老的布局方式，现在主要就用在这种"文字绕排"的场合。 */
+.first-paragraph::first-letter {
+  font-size: 6rem;
+  color: orangered;
+  float: left;
+  margin-right: 1rem;
+}
+
+.quote {
+  color: #00beef;
+  font-size: 2.4rem;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+}
+
+/* 跟 FontAwesome 图标同一个原理：用 ::before / ::after 加 content 往元素里塞内容。
+   引号只是装饰，所以写在 CSS 里，不写进 HTML。 */
+.quote::before {
+  content: '" ';
+}
+
+.quote::after {
+  content: ' "';
+}
+
+/* 图文区这个元素同时有 text 和 text-with-images 两个类，两条规则都作用在它身上
+   （这不是继承，是同一个元素被两个选择器同时选中）。
+   所以它从 .text 拿到了 grid-column: 2 / 3（放进版心）、字号等，
+   这里再把它变成两列网格：左边历史列表占 1 份，右边图片区占 2 份。 */
+.text-with-images {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* 去掉列表前面的圆点。 */
+.lists {
+  list-style-type: none;
+  margin-top: 2rem;
+}
+
+.lists li {
+  margin-bottom: 1.5rem;
+}
+
+.list-title, .list-subtitle {
+  color: #00beef;
+}
+
+/* 图片拼贴区，又嵌了一层网格（main → .text-with-images → .image-wrapper，共三层）。
+   两列 2fr 1fr；显式写了 3 行，每行高度 min-content，也就是刚好包住这一行的内容。
+   place-items: center 是 align-items 和 justify-items 的简写：
+   每个子项在自己的格子里上下、左右都居中。
+   4 个子项按 HTML 顺序自动摆放：
+     第 1 行：.image-1 跨满两列（见下一条规则）
+     第 2 行：.image-2 在左（2fr），.image-quote 在右（1fr）
+     第 3 行：.image-3 跨满两列 */
+.image-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(3, min-content);
+  gap: 2rem;
+  place-items: center;
+}
+
+/* 又是 1 / -1：跨满所有列。 */
+.image-1, .image-3 {
+  grid-column: 1 / -1;
+}
+
+
+/* ========== ⑤ 响应式 ==========
+   max-width: 720px = 屏幕宽度不超过 720px 时生效。
+   用 max-width 属于"桌面优先"写法：先写好宽屏样式，再往窄屏一层层打补丁。
+   only screen：只对屏幕生效（打印时不生效）。
+   窗口越窄，同时生效的媒体查询越多：比如 400px 宽时，下面四个全部生效。
+   它们只是在外面规则的基础上覆盖，不会取消外面的规则。
+   媒体查询本身不增加优先级，选择器优先级相同时，写在后面的赢：
+   所以 400px 宽时 .hero-title 是 4.5rem（最后一个），不是 6rem。 */
+
+/* 图片区改成单列。4 个子项要排 4 行，但上面只写了 3 行显式行，
+   所以第 4 行（.image-3）是浏览器补出来的隐式行。 */
+@media only screen and (max-width: 720px) {
+  .image-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 图文区改成单列：历史列表在上，图片在下。 */
+@media only screen and (max-width: 600px) {
+  .text-with-images {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 小屏幕整体缩小字号。 */
+@media only screen and (max-width: 550px) {
+  .hero-title {
+    font-size: 6rem;
+  }
+  
+  .hero-subtitle,
+  .author,
+  .quote,
+  .list-title {
+    font-size: 1.8rem;
+  }
+  
+  .social-icons {
+    font-size: 2rem;
+  }
+
+  .text {
+    font-size: 1.6rem;
+  } 
+}
+
+/* 更窄时，大标题再缩一档。 */
+@media only screen and (max-width: 420px) {
+  .hero-title {
+    font-size: 4.5rem;
+  }
+}

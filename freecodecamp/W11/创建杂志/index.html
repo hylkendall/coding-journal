@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 让手机浏览器按设备的真实宽度来渲染。
+         不加的话，手机会按一个很宽的虚拟屏幕排版再整体缩小，媒体查询就对不上了。 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magazine</title>
+    <!-- Google Fonts：一个链接引入三种字体。
+         URL 里的 %7C 是竖线 | 的编码，用来分隔字体名：Anton | Baskervville | Raleway。
+         display=swap：字体还没下载完时，先用后备字体把文字显示出来，下载完再换上，避免文字一片空白。 -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Anton%7CBaskervville%7CRaleway&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome 图标字体：提供 fab、fa-facebook-f 这些类名。 -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    />
+    <!-- 自己的样式表放最后：选择器优先级相同时，后面的规则赢，方便覆盖第三方样式。 -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- 页面结构图（先画框，再写样式）：
+         main ············ 外层网格：左留白 | 版心 | 右留白
+         ├─ section.heading ········ 标题区，内部 2 列网格
+         │   ├─ header.hero ········ 大图 + 大标题 + 副标题，跨满 2 列
+         │   ├─ div.author ········· 作者和日期，左列
+         │   └─ div.social-icons ··· 社交图标，右列（内部又是 5 列网格）
+         ├─ section.text ··········· 正文，CSS 多列分栏
+         └─ section.text.text-with-images ··· 图文区，内部 2 列网格（1fr 2fr）
+             ├─ article.brief-history ······· 课程历史列表，左边 1 份
+             └─ aside.image-wrapper ········· 图片拼贴，右边 2 份（内部又是 2 列网格）
+    -->
+    <main>
+      <section class="heading">
+        <!-- header：一个区块的头部，不一定是整页的页眉。 -->
+        <header class="hero">
+          <!-- loading="lazy"：图片快滚动到可视区域时才开始下载，省流量、让首屏更快。
+               不过首屏一打开就能看到的大图，实际项目里不建议用 lazy，会推迟它显示出来。这里照题目写。 -->
+          <img
+            src="https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png"
+            alt="freecodecamp logo"
+            loading="lazy"
+            class="hero-img"
+          />
+          <h1 class="hero-title">OUR NEW CURRICULUM</h1>
+          <p class="hero-subtitle">
+            Our efforts to restructure our curriculum with a more project-based
+            focus
+          </p>
+        </header>
+        <div class="author">
+          <p class="author-name">
+            By
+            <!-- target="_blank"：在新标签页打开。
+                 rel="noreferrer"：跳转时不告诉对方"我是从哪个页面来的"（不带 Referer 介绍信）。 -->
+            <a href="https://freecodecamp.org" target="_blank" rel="noreferrer"
+              >freeCodeCamp</a
+            >
+          </p>
+          <p class="publish-date">March 7, 2019</p>
+        </div>
+        <!-- 每个 <i> 是空标签：fab 指定用 FontAwesome 的品牌图标字体，
+             fa-xxx 用 ::before 塞进对应的字符，两个类一起才显示出图标。
+             无障碍问题：这些链接只有图标、没有文字，屏幕阅读器读不出链接去哪。
+             实际项目里给 <a> 加 aria-label="Facebook" 这样的说明，给 <i> 加 aria-hidden="true"。 -->
+        <div class="social-icons">
+          <a href="https://www.facebook.com/freecodecamp/">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://twitter.com/freecodecamp/">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://instagram.com/freecodecamp">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/school/free-code-camp/">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.youtube.com/freecodecamp">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </section>
+      <section class="text">
+        <!-- first-paragraph 这个类专门给 CSS 的 ::first-letter 做首字下沉用。 -->
+        <p class="first-paragraph">
+          Soon the freeCodeCamp curriculum will be 100% project-driven learning. Instead of a series of coding challenges, you'll learn through building projects - step by step. Before we get into the details, let me emphasize: we are not changing the certifications. All 6 certifications will still have the same 5 required projects. We are only changing the optional coding challenges.
+        </p>
+        <p>
+          After years - years - of pondering these two problems and how to solve them, I slipped, hit my head on the sink, and when I came to I had a revelation! A vision! A picture in my head! A picture of this! This is what makes time travel possible: the flux capacitor!
+        </p>
+        <p>
+          It wasn't as dramatic as Doc's revelation in Back to the Future. It
+          just occurred to me while I was going for a run. The revelation: the entire curriculum should be a series of projects. Instead of individual coding challenges, we'll just have projects, each with their own seamless series of tests. Each test gives you just enough information to figure out how to get it to pass. (And you can view hints if that isn't enough.)
+        </p>
+        <!-- blockquote：引用块。上下两条 <hr> 是装饰线；
+             引号不写在这里，由 CSS 的 .quote::before / ::after 加上去。 -->
+        <blockquote>
+          <hr />
+          <p class="quote">
+            The entire curriculum should be a series of projects
+          </p>
+          <hr />
+        </blockquote>
+        <p>
+          No more walls of explanatory text. No more walls of tests. Just one
+          test at a time, as you build up a working project. Over the course of passing thousands of tests, you build up projects and your own understanding of coding fundamentals. There is no transition between lessons and projects, because the lessons themselves are baked into projects. And there's plenty of repetition to help you retain everything because - hey - building projects in real life has plenty of repetition.
+        </p>
+        <p>
+          The main design challenge is taking what is currently paragraphs of explanation and instructions and packing them into a single test description text. Each project will involve dozens of tests like this. People will be coding the entire time, rather than switching back and forth from "reading mode" to "coding mode".
+        </p>
+        <p>
+          Instead of a series of coding challenges, people will be in their code editor passing one test after another, quickly building up a project. People will get into a real flow state, similar to what they experience when they build the required projects at the end of each certification. They'll get that sense of forward progress right from the beginning. And freeCodeCamp will be a much smoother experience.
+        </p>
+      </section>
+      <!-- 一个元素可以有多个类，用空格分隔。
+           .text 和 .text-with-images 两条规则都会作用在这个 section 上。 -->
+      <section class="text text-with-images">
+        <!-- article：能独立成篇的内容，单独拿出去也读得懂。 -->
+        <article class="brief-history">
+          <h3 class="list-title">A Brief History</h3>
+          <p>Of the Curriculum</p>
+          <ul class="lists">
+            <li>
+              <h4 class="list-subtitle">V1 - 2014</h4>
+              <p>
+                We launched freeCodeCamp with a simple list of 15 resources,
+                including Harvard's CS50 and Stanford's Database Class.
+              </p>
+            </li>
+            <li>
+              <h4 class="list-subtitle">V2 - 2015</h4>
+              <p>We added interactive algorithm challenges.</p>
+            </li>
+            <li>
+              <h4 class="list-subtitle">V3 - 2015</h4>
+              <p>
+                We added our own HTML+CSS challenges (before we'd been relying on
+                General Assembly's Dash course for these).
+              </p>
+            </li>
+            <li>
+              <h4 class="list-subtitle">V4 - 2016</h4>
+              <p>
+                We expanded the curriculum to 3 certifications, including Front-End,
+                Back-End, and Data Visualization. They each had 10 required
+                projects, but only the Front-End section had its own challenges.
+                For the other certs, we were still using external resources like
+                Node School.
+              </p>
+            </li>
+            <li>
+              <h4 class="list-subtitle">V5 - 2017</h4>
+              <p>We added the back-end and data visualization challenges.</p>
+            </li>
+            <li>
+              <h4 class="list-subtitle">V6 - 2018</h4>
+              <p>
+                We launched 6 new certifications to replace our old ones. This was
+                the biggest curriculum improvement to date.
+              </p>
+            </li>
+          </ul>
+        </article>
+        <!-- aside：附属内容，拿掉它主文章照样读得通。 -->
+        <aside class="image-wrapper">
+          <!-- width / height 属性：图片还没下载完时，浏览器就能先把位置占好，避免页面跳动。
+               本页的 height="400" 还有一个作用：CSS 只改了宽度，高度留在 400px，
+               图片框的比例因此会变，object-fit: cover 就在这时负责不让图片变形。 -->
+          <img
+            src="https://cdn.freecodecamp.org/testable-projects-fcc/images/random-quote-machine.png"
+            alt="image of the quote machine project"
+            loading="lazy"
+            class="image-1"
+            width="600"
+            height="400"
+          />
+          <img
+            src="https://cdn.freecodecamp.org/testable-projects-fcc/images/calc.png"
+            alt="image of a calculator project"
+            loading="lazy"
+            class="image-2"
+            width="400"
+            height="400"
+          />
+          <blockquote class="image-quote">
+            <hr />
+            <p class="quote">
+              The millions of people who are learning to code through freeCodeCamp
+              will have an even better resource to help them learn these
+              fundamentals.
+            </p>
+            <hr />
+          </blockquote>
+          <img
+            src="https://cdn.freecodecamp.org/testable-projects-fcc/images/survey-form-background.jpeg"
+            alt="four people working on code"
+            loading="lazy"
+            class="image-3"
+            width="600"
+            height="400"
+          />
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
