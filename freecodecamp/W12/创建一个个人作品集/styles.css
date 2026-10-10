@@ -20,6 +20,7 @@ body {
     width: 100%;
     background-color: var(--background-color0);
     position: fixed;
+    top: 0;
 }
 #navbar ul {
     list-style: none;
@@ -110,3 +111,4 @@ a {
         grid-template-columns: 1fr;
     }
 }
+
