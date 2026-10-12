@@ -1,0 +1,41 @@
+h2 ~ p {
+    color: red;
+}
+
+.g2 a:any-link { text-decoration: underline wavy; }
+
+.g2 a:link     { color: blue; }
+.g2 a:visited  { color: purple; font-size: 1.5rem;}
+.g2 a:hover    { color: orange; }
+.g2 a:active   { color: red; }
+
+.g2 .login { border: 2px solid #ccc; padding: 8px; }
+.g2 .login:focus-within { border-color: green; }
+.g2 input:focus { background: lightyellow; }
+
+.g2 p:target { background: gold; }
+
+
+.g3 label { display: block; margin: 8px 0; }
+
+.g3 input:enabled      { border: 2px solid gray; }
+.g3 input:disabled     { background: #ddd; }
+.g3 input:optional     { border-style: dashed; }
+.g3 input:valid        { outline: 2px solid green; }
+.g3 input:invalid      { outline: 2px solid red; }
+.g3 input:out-of-range { background: pink; }
+
+
+.g4 .box { height: 30px; margin: 6px 0; border: 1px solid gray; }
+.g4 .box:empty { background: tomato; }
+.g4 li::marker { color: red; font-size: 3em; background-color: yellow;}
+
+
+/* .g5 :is(#a) .x { color: red; } */
+.g5 :where(#a) .x { color: red; }
+.g5 .x         { color: green; }
+
+.g5 .card { border: 1px solid #ccc; padding: 8px; margin: 8px 0; }
+.g5 .card:has(img) { border: 3px solid tomato; }
+
+.g3 form:has(input:invalid) { background: #fee; }

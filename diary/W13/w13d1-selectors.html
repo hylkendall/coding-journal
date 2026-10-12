@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>w13d1-selectors</title>
+        <link href="w13d1-selectors.css" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            <p>P-1</p>
+            <h2>H2</h2>
+            <div><p>Pdiv</p></div> 
+            <p>P1</p>
+            <p>P2</p>
+            <p>P3</p>
+        </div>
+        
+        <section class="g2">
+        <h3>第 2 组：链接和用户操作</h3>
+
+        <nav>
+            <a href="https://developer.mozilla.org/zh-CN/">MDN（先点一次再返回）</a>
+            <a href="https://example.com/never-visited-12345">没访问过的</a>
+            <a>没有 href 的 a</a>
+            <a href="#sec1">跳到第 1 段</a>
+            <a href="#sec2">跳到第 2 段</a>
+        </nav>
+
+        <form class="login">
+            <input type="text" placeholder="用户名">
+            <input type="password" placeholder="密码">
+            <button type="button">按住我</button>
+        </form>
+
+        <p id="sec1">第 1 段</p>
+        <p id="sec2">第 2 段</p>
+        </section>
+
+        <section class="g3">
+        <h3>第 3 组：输入伪类</h3>
+        <form>
+            <label>昵称（必填）<input type="text" required></label>
+            <label>签名 <input type="text"></label>
+            <label>邮箱 <input type="email"></label>
+            <label>年龄 18–60 <input type="number" min="18" max="60" required></label>
+            <label>邀请码 <input type="text" value="ABC123" disabled></label>
+        </form>
+        </section>
+        
+        <section class="g4">
+        <h3>第 4 组：:empty 和 ::marker</h3>
+        <div class="box"></div>
+        <div class="box"> </div>
+        <div class="box"><!-- 注释 --></div>
+        <ul>
+            <li>苹果</li>
+            <li>香蕉</li>
+        </ul>
+        </section>
+
+
+        <section class="g5">
+        <h3>第 5 组：:is() / :where() / :has()</h3>
+        <div id="a">
+            <p class="x">我是什么颜色？</p>
+        </div>
+        <div class="card">
+            <img src="https://picsum.photos/80" alt="示例图">
+            <p>带图的卡片</p>
+        </div>
+        <div class="card">
+            <p>不带图的卡片</p>
+        </div>
+        </section>
+    </body>
+</html>
