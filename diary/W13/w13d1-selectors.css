@@ -39,3 +39,7 @@ h2 ~ p {
 .g5 .card:has(img) { border: 3px solid tomato; }
 
 .g3 form:has(input:invalid) { background: #fee; }
+
+
+.list :is(#main, .item, .active) { color: red; }
+#l .item.active                  { color: green; }

@@ -1,0 +1,60 @@
+*, *::before, *::after { box-sizing: border-box; }
+   body { margin: 0; }
+   img { display: block; max-width: 100%; }
+   [hidden] { display: none !important; }
+
+
+.g1 .row { display: flex; background: lightyellow; }
+
+/* 视觉隐藏的标准写法，认得就行，不用背，用的时候复制 */
+.g1 .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+
+.g2 .parent { width: 300px; border: 2px dashed gray; }
+.g2 .pct    { width: 50%;  background: lightblue; }
+.g2 .vw     { width: 50vw; background: lightpink; }
+.g2 .maxbox { width: max(300px, 50%); background: lightgreen; margin-top: 16px; }
+.g2 .video  { width: 50%; /* height: 100px; */ aspect-ratio: 16 / 9; background: plum; margin-top: 16px; }
+
+
+@media only screen and (min-width: 600px) {
+  .g3 .m-and { background: lightgreen; }
+}
+@media (max-width: 400px), (min-width: 900px) {
+  .g3 .m-or { background: orange; }
+}
+@media not screen and (min-width: 600px) {
+  .g3 .m-not { background: pink; }
+}
+
+
+.g4 .flow { width: 300px; border: 2px dashed gray; display: flex; /*flex-flow: row nowrap;*/flex-direction: row; flex-wrap: nowrap; }
+.g4 .flow div { width: 60px; height: 40px; background: lightblue; border: 1px solid #333; /* flex-shrink: 0; */ }
+
+.g4 .shadow {
+  width: 120px; height: 60px; margin: 30px;
+  background: white;
+  box-shadow: 0 0 0 8px blue, 0 0 0 12px red;
+}
+
+.g4 .spinner {
+  width: 60px; height: 60px; margin: 30px;
+  background: tomato;
+  animation: spin 3s linear infinite;
+}
+.g4 .spinner:hover { animation-play-state: paused; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+
+.g5 .frame { width: 200px; border: 3px solid tomato; }

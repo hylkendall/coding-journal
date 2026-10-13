@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>w13d2-review</title>
+        <link href="w13d2-review.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <section class="g1">
+        <h3>第 1 组：三种隐藏和 placeholder</h3>
+
+        <p>A：普通的一段字</p>
+        <p hidden>B：带 hidden 属性</p>
+        <div hidden class="row">C：带 hidden，又写了 display: flex</div>
+        <p aria-hidden="true">D：带 aria-hidden="true"</p>
+        <p class="sr-only">E：用 sr-only 类隐藏</p>
+        <p>F：最后一段普通的字</p>
+
+        <label for="name">姓名</label>
+        <input id="name" type="text" placeholder="例如：张三">
+
+        <input type="text" placeholder="邮箱">
+        </section>
+
+        <section class="g2">
+        <h3>第 2 组：vw、max()、aspect-ratio</h3>
+        <div class="parent">
+            <div class="pct">50%</div>
+            <div class="vw">50vw</div>
+        </div>
+        <div class="maxbox">max(300px, 50%)</div>
+        <div class="video">16 / 9</div>
+        </section>
+
+        <section class="g3">
+        <h3>第 3 组：媒体查询的 and / 逗号 / not / only</h3>
+        <p class="m-and">and：屏幕设备，而且宽度至少 600px，变绿</p>
+        <p class="m-or">逗号：宽度不超过 400px，或者至少 900px，变橙</p>
+        <p class="m-not">not：猜猜什么时候变粉</p>
+        </section>
+
+        <section class="g4">
+        <h3>第 4 组：flex-flow、多重阴影、animation-play-state</h3>
+        <div class="flow">
+            <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
+        </div>
+        <div class="shadow">阴影</div>
+        <div class="spinner"></div>
+        </section>
+
+        <section class="g5">
+        <h3>第 5 组：CSS Reset</h3>
+        <div class="frame">
+            <img src="https://picsum.photos/400/200" alt="示例图">
+        </div>
+        </section>
+
+    </body>
+</html>
