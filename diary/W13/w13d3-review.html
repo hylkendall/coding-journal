@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>w13d3-review</title>
+        <link href="w13d3-review.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <section class="g1">
+        <h3>第 1 组：结构伪类</h3>
+        <div class="box a">
+            <p>A 里唯一的 p</p>
+        </div>
+        <div class="box b">
+            <h4>B 的标题</h4>
+            <p>B 里唯一的 p</p>
+        </div>
+        <div class="box c">
+            <p>C 的第 1 个 p</p>
+            <p>C 的第 2 个 p</p>
+        </div>
+        </section>
+
+        <section class="g2">
+            <h3>第 2 组：Flex 对齐</h3>
+            <div class="row r1"><div>1</div><div>2</div><div>3</div></div>
+            <div class="row r2"><div>1</div><div>2</div><div>3</div></div>
+            <div class="row r3"><div>1</div><div>2</div><div>3</div></div>
+            <div class="row r4"><div>1</div><div>2</div><div>3</div></div>
+        </section>
+        
+        <section class="g3">
+        <h3>第 3 组：Grid 放置和对齐</h3>
+        <div class="grid ga">
+            <div class="wide">wide</div><div>2</div><div>3</div><div>4</div><div>5</div>
+        </div>
+        <div class="grid gb">
+            <div>1</div><div>2</div><div class="big">big</div><div>4</div><div>5</div>
+        </div>
+        <div class="grid gc">
+            <div>1</div><div class="me">me</div><div>3</div>
+        </div>
+        </section>
+
+        <section class="g4">
+        <h3>第 4 组：动画子属性</h3>
+        <div class="track"><div class="ball b1">linear</div></div>
+        <div class="track"><div class="ball b2">ease</div></div>
+        <div class="track"><div class="ball b3">alt</div></div>
+        </section>
+
+        <section class="g5">
+        <h3>第 5 组：阴影、渐变、位移、溢出</h3>
+        <div class="card c1">外阴影</div>
+        <div class="card c2">内阴影</div>
+        <p class="t">文字阴影</p>
+        <div class="dot"></div>
+        <div class="stage"><div class="mover">mover</div></div>
+        <div class="scroller"><div class="tall">很高的内容</div></div>
+        </section>
+
+        <section class="g6">
+        <h3>第 6 组：快扫</h3>
+        <p class="ori">横屏绿 / 竖屏橙</p>
+        <p class="scheme">浅色模式白底黑字，深色模式黑底白字</p>
+        <p><a href="#g6-bottom">平滑滚到本组底部</a></p>
+        <p class="links">
+            <a href="https://example.com/a.pdf">PDF 链接</a>
+            <a href="https://example.org">外部链接</a>
+            <a href="/about">站内链接</a>
+        </p>
+        <div class="spacer"></div>
+        <p id="g6-bottom">本组底部</p>
+        </section>
+    </body>
+</html>

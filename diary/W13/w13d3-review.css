@@ -1,0 +1,51 @@
+.g1 .box { border: 1px dashed gray; padding: 8px; margin: 8px 0; }
+.g1 p:only-child   { background: gold; }
+.g1 p:only-of-type { outline: 3px solid tomato; }
+/*.g1 p:first-of-type { outline: 3px solid tomato; }*/
+
+
+.g2 .row { display: flex; width: 400px; height: 80px; border: 2px dashed gray; margin: 8px 0; }
+.g2 .row div { width: 60px; height: 40px; background: lightblue; border: 1px solid #333; }
+.g2 .r1 { justify-content: space-between; }
+.g2 .r2 { justify-content: space-around; }
+.g2 .r3 { justify-content: space-evenly; }
+.g2 .r4 { height: 160px; flex-direction: row-reverse; justify-content: flex-end;}
+
+
+.g3 .grid { display: grid; grid-template-columns: repeat(4, 80px); grid-auto-rows: 50px;
+            gap: 6px; margin: 12px 0; border: 2px dashed gray; width: max-content; }
+.g3 .grid div { background: lightblue; border: 1px solid #333; }
+.g3 .grid .wide { grid-column: 1 / -1; background: gold; }
+.g3 .gb {grid-auto-flow: dense;}
+.g3 .grid .big  { grid-column: span 3; background: tomato; }
+.g3 .gc {justify-items: center; align-items: end;}
+.g3 .grid .me   { justify-self: stretch; align-self: start; background: plum; }
+
+
+.g4 .track { width: 400px; border: 1px dashed gray; margin: 8px 0; }
+.g4 .ball  { width: 60px; height: 30px; background: lightblue; border: 1px solid #333; }
+.g4 .b1 { animation: slide 2s linear infinite; }
+.g4 .b2 { animation: slide 2s ease infinite; }
+.g4 .b3 { animation: slide 2s 2s ease-in-out 8 alternate; }
+@keyframes slide { to { transform: translateX(340px); } }
+
+
+.g5 .card { width: 140px; height: 60px; margin: 20px; background: white; border: 1px solid #ccc; }
+.g5 .c1 { box-shadow: 6px 6px 10px 0 rgba(0, 0, 0, .4); }
+.g5 .c2 { box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, .4); }
+.g5 .t  { font-size: 32px; text-shadow: 15px 5px 2px  gray; }
+.g5 .dot { width: 200px; height: 100px; background: radial-gradient(circle, yellow, red); }
+.g5 .stage { position: relative; width: 300px; height: 60px; border: 1px dashed gray; margin: 12px 0; }
+.g5 .mover { position: absolute; left: 50%; transform: translateX(-50%); width: 100px; height: 40px; background: lightblue; }
+.g5 .scroller { width: 200px; height: 80px; border: 2px solid gray; overflow-x: hidden; }
+.g5 .tall {width: 400px; height: 200px; background: linear-gradient(lightblue, plum); }
+
+
+html { scroll-behavior: smooth; }
+.g6 .spacer { height: 800px; }
+@media (orientation: landscape) { .g6 .ori { background: lightgreen; } }
+@media (orientation: portrait)  { .g6 .ori { background: orange; } }
+@media (prefers-color-scheme: dark) { .g6 .scheme { background: black; color: white; } }
+.g6 a[href$=".pdf"]    { color: red; }
+.g6 a[href^="https"]   { font-weight: bold; }
+.g6 a[href*="example"] { text-decoration: wavy underline; }
