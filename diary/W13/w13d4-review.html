@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>w13d4-review</title>
+        <style>
+            .track { width: 300px; border: 1px solid gray; }
+            .ball  { width: 30px; height: 30px; border-radius: 50%; background: tomato;
+                    animation: move 2s infinite alternate; }
+            .track:hover .ball { animation-play-state: paused; }
+            @keyframes move { to { transform: translateX(270px); } }
+
+            @media screen and (min-width: 600px), print {
+                .mq::after { content: " ← 生效"; }
+                }
+
+            .float-box { float: left; width: 80px; height: 80px; background: gold; }
+            /*.after { clear: both; }*/
+        </style>
+    </head>
+    <body>
+        <div class="track"><div class="ball"></div></div>
+
+        <p class="mq">媒体查询测试</p>
+
+        <p>第 1 段</p>
+        <p hidden>第 2 段（hidden 属性）</p>
+        <p>第 3 段</p>
+        <p style="visibility: hidden">第 4 段（visibility: hidden）</p>
+        <p>第 5 段</p>        
+
+        <div class="float-box">浮动</div>
+        <p class="after">我是后面的段落。我是后面的段落。我是后面的段落。我是后面的段落。我是后面的段落。</p>        
+    </body>
+</html>
