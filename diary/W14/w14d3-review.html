@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="wiewport" content="width=device=width, initial-scale=1.0">
+        <title>w14d3-review</title>
+        <style>
+        :focus { outline: 3px solid orange; }
+        </style>
+    </head>
+    <body>
+        <section>
+        <h2>tabindex</h2>
+        <button>按钮 A</button>
+        <div>普通 div（没写 tabindex）</div>
+        <div tabindex="0">div，tabindex="0"</div>
+        <a href="#">链接 B</a>
+        <p id="err" tabindex="-1">提交出错了，请重试。（tabindex="-1"）</p>
+        <button tabindex="3">按钮 C（tabindex="3"）</button>
+        </section>
+
+        <section>
+        <h2>accesskey</h2>
+        <label for="name">Name</label>
+        <input type="text" id="name" accesskey="n">
+        </section>
+
+
+        <section>
+        <h2>ARIA 属性</h2>
+
+        <!-- ① 只有图标的按钮 -->
+        <button>⚙</button>
+        <button aria-label="Settings">⚙</button>
+
+        <!-- ② 借页面上现成的文字当名字 -->
+        <span id="qty-text">Quantity</span>
+        <input type="number" aria-labelledby="qty-text">
+
+        <!-- ③ 补充说明 -->
+        <label for="pw">Password</label>
+        <input type="password" id="pw" aria-describedby="pw-help">
+        <p id="pw-help">At least 8 characters.</p>
+
+        <!-- ④ 对辅助技术隐藏 -->
+        <button><span>⚙</span> Settings</button>
+        <button><span aria-hidden="true">⚙</span> Settings</button>
+        </section>
+    </body>
+</html>
