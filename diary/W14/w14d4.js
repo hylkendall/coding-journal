@@ -1,0 +1,1 @@
+console.log('外部文件 w14d4.js 运行了');

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>w14d4</title>
+
+        <meta name="description" content="Kendall 的 HTML 复习笔记，第 14 周第 4 天。">
+        <meta property="og:title" content="W14D4 HTML 复习">
+        <meta property="og:type" content="article">
+        <meta property="og:image" content="https://example.com/cover.png">
+        <meta property="og:url" content="https://example.com/w14d4">
+
+        <style>
+        table, th, td { border: 1px solid #999; border-collapse: collapse; padding: 4px 8px; }
+        </style>
+    </head>
+    <body>
+        <section>
+        <h2>HTML 实体</h2>
+        <p>在 HTML 里写 <b>粗体</b> 要用 b 标签</p>
+        <p>在 HTML 里写 &lt;b&gt;粗体&lt;/b&gt; 要用 b 标签</p>
+        <p>Tom &amp; Jerry &copy; 2026</p>
+        </section>
+
+        <section>
+        <h2>布尔属性</h2>
+        <input type="text" placeholder="① 什么都没写">
+        <input type="text" placeholder="② 写了 disabled" disabled>
+        <input type="text" placeholder="③ disabled 写成 false" disabled="false">
+        </section>
+
+        <script>
+        console.log('内联 script 运行了');
+        </script>
+        <script src="w14d4.js"></script>
+
+        <section>
+        <h2>video：source / poster / muted</h2>
+        <video controls muted width="400"
+                poster="https://upload.wikimedia.org/wikipedia/commons/e/e8/Elephants_Dream_s5_both.jpg">
+            <source src="https://archive.org/download/ElephantsDream/ed_hd.avi" type="video/avi">
+            <source src="https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4" type="video/mp4">
+        </video>
+        </section>
+
+
+        <section>
+        <h2>target：_self / _parent / _top</h2>
+        <p>最外层：w14d4-review.html</p>
+        <iframe src="w14d4-frame1.html" width="500" height="300"></iframe>
+        </section>
+
+
+        <section>
+        <h2>表单</h2>
+        <form action="w14d4-dest.html" method="get">
+            <fieldset>
+            <legend>报名信息</legend>
+            <label for="nick">Nickname</label>
+            <input type="text" id="nick" name="nick" size="5" minlength="2" maxlength="8" required>
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="18" max="60">
+            </fieldset>
+            <button>提交</button>
+            <button type="reset">重置</button>
+            <button type="button">普通按钮</button>
+        </form>
+        </section>
+
+        <section>
+        <h2>表格</h2>
+        <table>
+            <caption>W14 复习进度</caption>
+            <tr><th>模块</th><th>周一</th><th>周二</th></tr>
+            <tr><td>基础 HTML</td><td colspan="2">自评 + 补漏</td></tr>
+        </table>
+        </section>
+    </body>
+</html>
