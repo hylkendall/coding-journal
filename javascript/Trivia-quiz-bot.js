@@ -1,0 +1,17 @@
+console.log("Hello! I'm your coding fun fact guide!");
+const botName = "Trivia bot";
+const botLocation = "School";
+const favoriteLanguage = "JavaScript";
+const botNameLocation = "My name is " + botName + " and I live on " + botLocation + ".";
+console.log(botNameLocation);
+const sayFavoriteLanguage = "My favorite programming language is " + favoriteLanguage + ".";
+console.log(sayFavoriteLanguage);
+let codingFact;
+codingFact = "My favorite programming language is " + favoriteLanguage + ".";
+console.log(codingFact);
+codingFact = "I like " + favoriteLanguage + ".";
+console.log(codingFact);
+codingFact = "I love " + favoriteLanguage + ".";
+console.log(codingFact);
+const shareForYou = "It was fun sharing these facts with you. Goodbye! - " + botName + " from " + botLocation + ".";
+console.log(shareForYou);
